@@ -1,0 +1,29 @@
+.card-custom {
+    width: 22%;
+    margin: auto;
+
+}
+
+/* For large devices (desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .card-custom {
+        width: 22%; /* Four cards per row */
+    }
+}
+
+/* For medium devices (tablets, 768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .card-custom {
+        width: 30%; /* Three cards per row */
+    }
+}
+
+/* For small devices (landscape phones, 576px to 767px) */
+@media (max-width: 767px) {
+    .card-custom {
+        width: 40%; /* Two cards per row */
+    }
+}
+
+
+
