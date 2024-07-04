@@ -116,7 +116,7 @@ async function ongetAllProducts(){
               </div>
               <div className="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay={1600}>
                 <a href="product.html" className="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                  Shop Now
+                  Shop Noww
                 </a>
               </div>
             </div>
