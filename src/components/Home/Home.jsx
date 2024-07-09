@@ -93,6 +93,34 @@ async function ongetAllProducts(){
     
     }
 
+
+const [selectedId,setSelectedCat]=useState(0)
+
+ function SetCateory(val){
+  setSelectedCat(val)
+ }
+ const [filteredProducts, setFilteredProducts] = useState([]);
+
+ const [categorizedData, setCategorizedData] = useState([]);
+
+
+ useEffect(()=>{
+  const filteredProduct = Allproducts?.filter((item) => item.category_id == selectedId)
+  const finalProdData = selectedId === 0 ? Allproducts: filteredProduct
+  // setFilteredProducts(finalProdData)
+  setCategorizedData(finalProdData)
+ },[selectedId,Allproducts])
+
+ const handleFilter = (filtered) => {
+   setFilteredProducts(filtered);
+ };
+
+
+
+const dataList = filteredProducts.length > 0 ? filteredProducts : categorizedData
+
+
+
   return (
     <>
   {/* Header */}
@@ -128,9 +156,15 @@ async function ongetAllProducts(){
   </section>
   {/* Banner */}
 
+
+{
+topProducts &&
 <TopBanner
 topProducts={topProducts}
 />
+  
+}
+
 
     
   
@@ -144,14 +178,23 @@ topProducts={topProducts}
       </div>
       <div className="flex-w flex-sb-m p-b-52">
         <div className="flex-w flex-l-m filter-tope-group m-tb-10">
-          <button className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+          <button 
+          onClick={()=> SetCateory(0)}
+          style={ selectedId === 0 ? {color:"#333",borderColor:"#797979"}:{}}
+          className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 " >
             All Products
           </button>
           {
             categories?.map((item)=>{
               return(
 
-              <button className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+              <button 
+              onClick={()=>{
+                SetCateory(item.id)
+              }}
+              className="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" 
+              style={ item.id === selectedId ? {color:"#333",borderColor:"#797979"}:{}}
+              >
               {item.cat_name}
             </button>
               )
@@ -163,7 +206,7 @@ topProducts={topProducts}
         </div>
         <div className="flex-w flex-c-m m-tb-10">
           <div 
-          onClick={()=> setFilter((p)=> !p)}
+          onClick={() => setFilter((p)=> !p)}
           className="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
             <i className="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list" />
             <i className="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none" />
@@ -190,8 +233,9 @@ topProducts={topProducts}
         </div> */}
         {
           showFilter  &&
-     <FiltersSection/>
-    }
+          <FiltersSection products={categorizedData} onFilter={handleFilter} />
+
+}
 
      </div>
 
@@ -199,7 +243,7 @@ topProducts={topProducts}
       <div className="row isotope-grid" style={{justifyContent:"center"}}>
 
       {
-        Allproducts.map((item)=>{
+        filteredProducts?.map((item)=>{
           return(
            
 

@@ -1748,6 +1748,20 @@ button.mfp-close {
 .filter-col4 {width: 20%;}
 
 /*---------------------------------------------*/
+
+.reset-button-custom {
+  padding: 10px 20px;
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reset-button-custom:hover {
+  background-color: #c00;
+}
+
 .filter-link {
   color: #aaa;
   border-bottom: 1px solid transparent;
