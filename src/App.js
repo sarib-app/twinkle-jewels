@@ -8,6 +8,8 @@ import ContactUs from './components/ContactUs';
 import Footer from './components/Footer';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ProductListing from './components/Home/ProductListing';
+import SearchComponents from './components/Search/SearchComponents';
 
 
 function App() {
@@ -20,6 +22,9 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/Products" element={<Products />} />  
+        <Route path="/ProductListing" element={<ProductListing />} />  
+        <Route path="/SearchComponents" element={<SearchComponents />} />  
+
         <Route path="/ContactUs" element={<ContactUs />} />   
 
 

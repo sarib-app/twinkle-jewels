@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 const Navbar = () => {
+  
   return (
     <>
       <header>
@@ -47,7 +49,7 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <Link to="/Products">Shop</Link>
+                <Link to="/ProductListing">Shop</Link>
               </li>
               <li className="label1" data-label1="hot">
                 <a href="s">Features</a>
@@ -65,15 +67,23 @@ const Navbar = () => {
           </div>	
           {/* Icon header */}
           <div className="wrap-icon-header flex-w flex-r-m">
-            <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
-              <i className="zmdi zmdi-search" />
+            <Link
+            to="/SearchComponents"
+            >
+            <div 
+            
+        
+            className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
+              <i   className="zmdi zmdi-search" />
             </div>
+            </Link>
+
             <div className="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify={2}>
               <i className="zmdi zmdi-shopping-cart" />
             </div>
-            <a href="#" className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify={0}>
+            {/* <a href="#" className="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti" data-notify={0}>
               <i className="zmdi zmdi-favorite-outline" />
-            </a>
+            </a> */}
           </div>
         </nav>
       </div>	
@@ -158,7 +168,7 @@ const Navbar = () => {
       </ul>
     </div>
     {/* Modal Search */}
-    <div className="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+    {/* <div className="modal-search-header flex-c-m trans-04 js-hide-modal-search">
       <div className="container-search-header">
         <button className="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
           <img src="images/icons/icon-close2.png" alt="CLOSE" />
@@ -170,7 +180,7 @@ const Navbar = () => {
           <input className="plh3" type="text" name="search" placeholder="Search..." />
         </form>
       </div>
-    </div>
+    </div> */}
   </header>
 
     {/* Cart */}

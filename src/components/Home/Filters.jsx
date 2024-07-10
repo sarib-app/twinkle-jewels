@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const FiltersSection = ({ products, onFilter }) => {
+const FiltersSection = ({ products, onFilter, resetFilter }) => {
   const [filters, setFilters] = useState({
     sortBy: "default",
     priceRange: "all",
@@ -37,7 +37,9 @@ const FiltersSection = ({ products, onFilter }) => {
       tags: [],
     });
   };
-
+useEffect(()=>{
+resetFilters()
+},[resetFilter])
   useEffect(() => {
     const filteredProducts = products.filter((product) => {
       const matchesPriceRange =
@@ -54,7 +56,7 @@ const FiltersSection = ({ products, onFilter }) => {
     });
 
     onFilter(filteredProducts);
-  }, [filters, products, onFilter]);
+  }, [filters, products]);
 
   return (
     <div className="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
@@ -64,22 +66,22 @@ const FiltersSection = ({ products, onFilter }) => {
         </div>
         <ul>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.sortBy === "default" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("default")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.sortBy === "default" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("default")}>
               Default
             </a>
           </li>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.sortBy === "newness" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("newness")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.sortBy === "newness" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("newness")}>
               Newness
             </a>
           </li>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.sortBy === "priceLowToHigh" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("priceLowToHigh")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.sortBy === "priceLowToHigh" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("priceLowToHigh")}>
               Price: Low to High
             </a>
           </li>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.sortBy === "priceHighToLow" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("priceHighToLow")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.sortBy === "priceHighToLow" ? "filter-link-active" : ""}`} onClick={() => handleSortByChange("priceHighToLow")}>
               Price: High to Low
             </a>
           </li>
@@ -91,22 +93,22 @@ const FiltersSection = ({ products, onFilter }) => {
         </div>
         <ul>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.priceRange === "all" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("all")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.priceRange === "all" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("all")}>
               All
             </a>
           </li>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.priceRange === "$0.00 - $50.00" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("$0.00 - $50.00")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.priceRange === "$0.00 - $50.00" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("$0.00 - $50.00")}>
               $0.00 - $50.00
             </a>
           </li>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.priceRange === "$50.00 - $100.00" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("$50.00 - $100.00")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.priceRange === "$50.00 - $100.00" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("$50.00 - $100.00")}>
               $50.00 - $100.00
             </a>
           </li>
           <li className="p-b-6">
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.priceRange === "$200.00+" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("$200.00+")}>
+            <a  className={`filter-link stext-106 trans-04 ${filters.priceRange === "$200.00+" ? "filter-link-active" : ""}`} onClick={() => handlePriceRangeChange("$200.00+")}>
               $200.00+
             </a>
           </li>
@@ -121,7 +123,7 @@ const FiltersSection = ({ products, onFilter }) => {
             <span className="fs-15 lh-12 m-r-6" style={{color: '#D6AD60'}}>
               <i className="zmdi zmdi-circle" />
             </span>
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.material === "gold" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("gold")}>
+            <a className={`filter-link stext-106 trans-04 ${filters.material === "gold" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("gold")}>
               Gold
             </a>
           </li>
@@ -129,7 +131,7 @@ const FiltersSection = ({ products, onFilter }) => {
             <span className="fs-15 lh-12 m-r-6" style={{color: '#C0C0C0'}}>
               <i className="zmdi zmdi-circle" />
             </span>
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.material === "silver" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("silver")}>
+            <a className={`filter-link stext-106 trans-04 ${filters.material === "silver" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("silver")}>
               Silver
             </a>
           </li>
@@ -137,7 +139,7 @@ const FiltersSection = ({ products, onFilter }) => {
             <span className="fs-15 lh-12 m-r-6" style={{color: '#e5e4e2'}}>
               <i className="zmdi zmdi-circle" />
             </span>
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.material === "platinum" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("platinum")}>
+            <a className={`filter-link stext-106 trans-04 ${filters.material === "platinum" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("platinum")}>
               Platinum
             </a>
           </li>
@@ -145,7 +147,7 @@ const FiltersSection = ({ products, onFilter }) => {
             <span className="fs-15 lh-12 m-r-6" style={{color: '#b9f2ff'}}>
               <i className="zmdi zmdi-circle" />
             </span>
-            <a href="#" className={`filter-link stext-106 trans-04 ${filters.material === "diamond" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("diamond")}>
+            <a className={`filter-link stext-106 trans-04 ${filters.material === "diamond" ? "filter-link-active" : ""}`} onClick={() => handleMaterialChange("diamond")}>
               Diamond
             </a>
           </li>
@@ -168,11 +170,7 @@ const FiltersSection = ({ products, onFilter }) => {
           ))}
         </div>
       </div>
-      <div className="filter-reset p-t-27">
-        <button onClick={resetFilters} className="reset-button">
-          Reset Filters
-        </button>
-      </div>
+    
     </div>
   );
 };
@@ -203,12 +201,12 @@ export default FiltersSection;
 //             </li>
        
 //             <li className="p-b-6">
-//               <a href="#" className="filter-link stext-106 trans-04 filter-link-active">
+//               <a className="filter-link stext-106 trans-04 filter-link-active">
 //                 Newness
 //               </a>
 //             </li>
 //             <li className="p-b-6">
-//               <a href="#" className="filter-link stext-106 trans-04">
+//               <a className="filter-link stext-106 trans-04">
 //                 Price: Low to High
 //               </a>
 //             </li>
